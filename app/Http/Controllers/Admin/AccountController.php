@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\JobSeeker;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -11,7 +11,7 @@ class AccountController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Login Controller
+    | Account Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
@@ -22,25 +22,44 @@ class AccountController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/job-seeker';
+    /**
+     * After  log in redirect to admin home page
+     */
+    protected $redirectTo = '/admin';
 
     public function __construct()
     {
-        $this->middleware('guest:jobSeeker', ['except' => ['logout']]);
+        $this->middleware('guest:admin', ['except' => ['logout']]);
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * Get the guard to be used during authentication.
      */
-
     protected function guard(){
-        return Auth::guard("jobSeeker");
+        return Auth::guard("admin");
     }
 
+    /**
+     * Show the admin's login form.
+     */
     public function showLoginForm(){
-        return view('jobSeeker.login');
+        return view('admin.login');
     }
+
+    /**
+     * Logout the authenticated user
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('/admin/login');
+    }
+
+
 
 }

@@ -15,24 +15,30 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        switch ($guard) {
+        switch (user_type()) {
             case 'admin':
-                if(Auth::guard($guard)->check()){
+                if(Auth::guard(user_type())->check()){
                     return redirect()->route('admin.index');
                 }
                 break;
 
-            case 'jobSeeker':
-                if(Auth::guard($guard)->check()){
-                    return redirect()->route('admin.index');
+            case 'user':
+                if(Auth::guard(user_type())->check()){
+                    return redirect()->route('user.index');
+                }
+                break;
+
+            case 'associate':
+                if(Auth::guard(user_type())->check()){
+                    return redirect()->route('associate.index');
                 }
                 break;
             
             default:
-                if (Auth::guard($guard)->check()) {
-                    return redirect('/home');
+                if (Auth::guard(user_type())->check()) {
+                    return redirect()->route('home');
                 }
                 break;
         }

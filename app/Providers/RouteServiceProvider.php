@@ -39,7 +39,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapJobSeekerRoutes();
+        $this->mapAdminRoutes();
+
+        $this->mapUserRoutes();
+
+        $this->mapAssociateRoutes();
 
         //
     }
@@ -74,17 +78,47 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "api" routes for the application.
+     * Define the "admin" routes for the application.
      *
      * These routes are typically stateless.
      *
      * @return void
      */
-    protected function mapJobSeekerRoutes()
+    protected function mapAdminRoutes()
     {
-        Route::prefix('job-seeker')
-             ->middleware('jobSeeker')
+        Route::prefix('admin')
+             ->middleware('admin')
              ->namespace($this->namespace)
-             ->group(base_path('routes/jobSeeker.php'));
+             ->group(base_path('routes/admin.php'));
+    }
+
+    /**
+     * Define the "user" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapUserRoutes()
+    {
+        Route::prefix('user')
+             ->middleware('user')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/user.php'));
+    }
+
+    /**
+     * Define the "associate" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAssociateRoutes()
+    {
+        Route::prefix('associate')
+             ->middleware('associate')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/associate.php'));
     }
 }

@@ -15,8 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(AdminsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(AssociatesTableSeeder::class);
     }
 }
 
@@ -28,44 +26,13 @@ class AdminsTableSeeder extends Seeder {
         Admin::truncate();
 
         Admin::create([
+            'uid' => \Uuid::generate(),
         	'name' => 'Devendra Rajput',
             'email' => 'devrajput.developer@gmail.com',
-            'email_verified_at' => currentDateTime(),   // currentDateTime() is a helper function defined in app\helpers.php
+            'phone' => '0123456789',
             'password' => bcrypt('12345'),
             'remember_token' => null
         ]);
     }
 
-}
-
-class UsersTableSeeder extends Seeder {
-
-    public function run()
-    {        
-        User::truncate();
-
-        User::create([
-        	'name' => 'Devendra Rajput',
-            'email' => 'devrajput.developer@gmail.com',
-            'email_verified_at' => currentDateTime(),   // currentDateTime() is a helper function defined in app\helpers.php
-            'password' => bcrypt('12345'),
-            'remember_token' => null
-        ]);
-    }
-}
-
-class AssociatesTableSeeder extends Seeder {
-
-    public function run()
-    {        
-        Associate::truncate();
-
-        Associate::create([
-        	'name' => 'Devendra Rajput',
-            'email' => 'devrajput.developer@gmail.com',
-            'email_verified_at' => currentDateTime(),   // currentDateTime() is a helper function defined in app\helpers.php
-            'password' => bcrypt('12345'),
-            'remember_token' => null
-        ]);
-    }
 }

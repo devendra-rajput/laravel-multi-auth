@@ -60,12 +60,17 @@ class Handler extends ExceptionHandler
         $guard = array_get($exception->guards(), 0);
 
         switch ($guard) {
+
             case 'admin':
                 $login = 'admin.login';
                 break;
 
-            case 'jobSeeker':
-                $login = 'jobSeeker.login';
+            case 'user':
+                $login = 'user.login';
+                break;
+
+            case 'associate':
+                $login = 'associate.login';
                 break;
             
             default:

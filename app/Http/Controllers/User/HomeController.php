@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\JobSeeker;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:jobSeeker');
+        $this->middleware('auth:user');
     }
 
     /**
@@ -24,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('jobSeeker/home');
+        return view('user/home');
+    }
+
+    /**
+     * Show user account details
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function account()
+    {
+        $user = \Auth::user();
+        return view('user/account', compact('user'));
     }
 }

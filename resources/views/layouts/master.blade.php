@@ -14,15 +14,11 @@
     
     </head> 
     <body id="gototop"> 
-        
+  
+        @include('layouts.include.nav')
+
         @include('layouts.include.alert_messages')
-        
-        <div class="top-menu">
-            <div class="container">
-                @include('layouts.include.nav')
-            </div>
-        </div>
-        
+
         @yield('content')
         
         @include('layouts.include.footer')
