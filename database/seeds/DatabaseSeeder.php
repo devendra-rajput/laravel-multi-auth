@@ -30,7 +30,7 @@ class AdminsTableSeeder extends Seeder {
         	'name' => 'Devendra Rajput',
             'email' => 'devrajput.developer@gmail.com',
             'phone' => '0123456789',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('dev@123'),
             'remember_token' => null
         ]);
     }

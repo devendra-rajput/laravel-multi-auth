@@ -19,7 +19,13 @@
 
         @include('layouts.include.alert_messages')
 
-        @yield('content')
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
         
         @include('layouts.include.footer')
         
