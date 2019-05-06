@@ -4,9 +4,9 @@
 
 ### Author: Devendra Rajput
 
-### Author Homepage: www.devrajput.in
+### Author Homepage: <a href="www.devrajput.in" target="_blank">www.devrajput.in</a>
 
-### Live Demo: http://multi-auth.devrajput.in
+### Live Demo: <a href="http://multi-auth.devrajput.in" target="_blank">http://multi-auth.devrajput.in</a>
 
 This project is just create admin, user and associate side (multi auth), which is totaly isolated from laravel normal auth.
 
