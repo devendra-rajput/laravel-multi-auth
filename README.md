@@ -4,7 +4,7 @@
 
 ### Author: Devendra Rajput
 
-### Author Homepage: https://devrajput.in
+### Author Homepage: www.devrajput.in
 
 This project is just create admin, user and associate side (multi auth), which is totaly isolated from laravel normal auth.
 
@@ -13,7 +13,6 @@ On top of that, you can use multiple authentication types, simultaneously, so yo
 ### Version Guidance
 
 Laravel 5.7.9
-MySql
 
 ### Installation.
 
@@ -27,6 +26,9 @@ MySql
 After installation, go to http://127.0.0.1:8000
 The home page will look like this
 
+<img src="public/images/multi-auth.JPG" width="70%">
+
+Right side on the navigation bar you can see login links of different type of the users. Click on that to login particular type of user.
 
 
 ### License
