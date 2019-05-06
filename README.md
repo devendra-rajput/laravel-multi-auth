@@ -4,7 +4,7 @@
 
 ### Author: Devendra Rajput
 
-### Author Homepage: <a href="www.devrajput.in" target="_blank">www.devrajput.in</a>
+### Author Homepage: <a href="https://www.devrajput.in" target="_blank">www.devrajput.in</a>
 
 ### Live Demo: <a href="http://multi-auth.devrajput.in" target="_blank">http://multi-auth.devrajput.in</a>
 
