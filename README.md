@@ -6,6 +6,8 @@
 
 ### Author Homepage: www.devrajput.in
 
+### Live Demo: http://multi-auth.devrajput.in
+
 This project is just create admin, user and associate side (multi auth), which is totaly isolated from laravel normal auth.
 
 On top of that, you can use multiple authentication types, simultaneously, so you can be logged in as an user, an admin and an associate without conflicts!
