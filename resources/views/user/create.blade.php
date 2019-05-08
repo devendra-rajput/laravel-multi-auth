@@ -66,11 +66,11 @@
                 </div>
             </div>
 
-            <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
+            <div class="form-group row offset-md-4">
+                <div class="col-sm-3 ">
                     <button type="submit" class="btn btn-primary">Sign Up</button>
-                    <span class="ml-5">Have an account? </span><a class="btn btn-link td-none pl-0" href="{{ route('user.login') }}">Sign In</a>
                 </div>
+                <div class="col-sm-9">Have an account? <a class="btn btn-link td-none pl-0" href="{{ route('user.login') }}">Sign In</a></div>
             </div>
         </form>
     @endcomponent

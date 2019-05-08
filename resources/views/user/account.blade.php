@@ -5,16 +5,12 @@
     @component('components.card')
         @slot('header') My Account @endslot
         <div class="row">
-            <div class="col-md-2">
-                <div class="p-2"><strong>Name:</strong></div>
-                <div class="p-2"><strong>Email:</strong></div>
-                <div class="p-2"><strong>Phone:</strong></div>
-            </div>
-            <div class="col-md-10">
-                <div class="p-2">{{ $user->name }}</div>
-                <div class="p-2">{{ $user->email }}</div>
-                <div class="p-2">{{ $user->phone }}</div>
-            </div>
+            <div class="col-sm-4"><strong>Name:</strong></div>
+            <div class="col-sm-8 mb-3">{{ $user->name }}</div>
+            <div class="col-sm-4"><strong>Email:</strong></div>
+            <div class="col-sm-8 mb-3">{{ $user->email }}</div>
+            <div class="col-sm-4"><strong>Phone:</strong></div>
+            <div class="col-sm-8 mb-3">{{ $user->phone }}</div>
         </div>
     @endcomponent
     

@@ -40,11 +40,11 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <div class="col-md-8 offset-md-4">
+            <div class="form-group row offset-md-4">
+                <div class="col-sm-3 ">
                     <button type="submit" class="btn btn-primary">Login</button>
-                    <span class="ml-5">Need an account? </span><a class="btn btn-link td-none pl-0" href="{{ route('user.create') }}">Sign Up</a>
                 </div>
+                <div class="col-sm-9">Need an account? <a class="btn btn-link td-none pl-0" href="{{ route('user.create') }}">Sign Up</a></div>
             </div>
         </form>
     @endcomponent
