@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+
 Route::middleware(['guest:associate'])->namespace('Associate')->group(function (){
 
 	Route::get('login', 'AccountController@showLoginForm')->name('associate.login');

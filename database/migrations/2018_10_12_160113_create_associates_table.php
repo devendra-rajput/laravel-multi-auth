@@ -16,10 +16,12 @@ class CreateAssociatesTable extends Migration
         Schema::create('associates', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uid');
+            $table->string('provider_id')->nullable();
+            $table->string('provider_name')->nullable();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone', 150)->unique();
-            $table->string('password');
+            $table->string('phone', 150)->unique()->nullable();
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

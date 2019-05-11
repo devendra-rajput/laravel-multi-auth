@@ -10,7 +10,7 @@
             <div class="col-sm-4"><strong>Email:</strong></div>
             <div class="col-sm-8 mb-3">{{ $user->email }}</div>
             <div class="col-sm-4"><strong>Phone:</strong></div>
-            <div class="col-sm-8 mb-3">{{ $user->phone }}</div>
+            <div class="col-sm-8 mb-3">{{ (isset($user->phone)) ? ($user->phone) : 'N/A' }}</div>
         </div>
     @endcomponent
     

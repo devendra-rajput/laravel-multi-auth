@@ -44,6 +44,22 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
                 <div class="col-sm-9">Need an account? <a class="btn btn-link td-none pl-0" href="{{ route('associate.create') }}">Sign Up</a></div>
+                <!-- <div class="col-sm-12"><a class="loginBtn loginBtn--google" href="{{ url('associate/login/google') }}">Login with Google</a></div> -->
+            </div>
+
+            <div class="row  offset-md-4 or-line">
+                <div class="col-xs-12 col-sm-9">
+                    <hr class="hr-or">
+                    <span class="span-or">or</span>
+                </div>
+            </div>
+
+            <div class="row offset-md-2 text-center">
+                <div class="col-md-12">
+                    <a href="{{ url('associate/login/google') }}">
+                        <img class="google-signin-btn" src="{{ asset('images/google-signin.png') }}">
+                    </a>
+                </div>
             </div>
         </form>
     @endcomponent

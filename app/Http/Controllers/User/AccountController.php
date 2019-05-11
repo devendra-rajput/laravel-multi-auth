@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use Auth;
+use Socialite;
 
 class AccountController extends Controller
 {
@@ -45,6 +46,49 @@ class AccountController extends Controller
      */
     public function showLoginForm(){
         return view('user.login');
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function callback()
+    {
+        try {
+            
+        
+            $googleUser = Socialite::driver('google')->user();
+            $existUser = User::where('email',$googleUser->email)->first();
+            
+
+            if($existUser) {
+                Auth::loginUsingId($existUser->id);
+            }
+            else {
+                $user = new User;
+                $user->name = $googleUser->name;
+                $user->email = $googleUser->email;
+                $user->google_id = $googleUser->id;
+                $user->password = md5(rand(1,10000));
+                $user->save();
+                Auth::loginUsingId($user->id);
+            }
+            return redirect()->to('/home');
+        } 
+        catch (Exception $e) {
+            return 'error';
+        }
     }
 
     /**

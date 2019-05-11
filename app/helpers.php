@@ -17,6 +17,7 @@ if (! function_exists('user_type')) {
     }
 }
 
+
 if (! function_exists('authenticatedUser')) {
     function authenticatedUser($userType = '')
     {
@@ -27,6 +28,16 @@ if (! function_exists('authenticatedUser')) {
     }
 }
 
+if (! function_exists('get_guard')) {
+    function get_guard(){
+        if(\Auth::guard('admin')->check())
+            {return "admin";}
+        else if(\Auth::guard('user')->check())
+            {return "user";}
+        else if(\Auth::guard('associate')->check())
+            {return "associate";}
+    }
+}
 
 if (! function_exists('currentDateTime')) {
     function currentDateTime() {

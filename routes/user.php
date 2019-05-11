@@ -11,7 +11,11 @@
 |
 */
 
+Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+
 Route::middleware(['guest:user'])->namespace('User')->group(function (){
+	
 
 	Route::get('login', 'AccountController@showLoginForm')->name('user.login');
 	Route::post('login', 'AccountController@login')->name('user.login.submit');
