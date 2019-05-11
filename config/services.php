@@ -41,10 +41,4 @@ return [
         'redirect' => 'http://127.0.0.1:8000/user/callback',
     ],
 
-    'github' => [
-        'client_id' => env('GITHUB_AUTH_CLIENT_ID'),
-        'client_secret' => env('GITHUB_AUTH_CLIENT_SECRET'),
-        'redirect' => 'http://127.0.0.1:8000/user/callback',
-    ],
-
 ];
