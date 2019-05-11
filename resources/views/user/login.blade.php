@@ -4,7 +4,6 @@
 
     @component('components.card')
         @slot('header') User Login @endslot
-    ​
         <form method="POST" action="{{ route('user.login.submit') }}">
             @csrf
             <div class="form-group row">

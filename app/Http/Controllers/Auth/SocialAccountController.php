@@ -9,6 +9,9 @@ use Socialite;
 
 class SocialAccountController extends Controller
 {
+    /**
+     * Redirect to the provider
+     */
     public function redirectToProvider($provider, Request $request)
     {
         $userType = $request->route()->getPrefix();
@@ -22,18 +25,18 @@ class SocialAccountController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(SocialAccountsService $socialAccountService, Request $request, $provider)
+    public function handleProviderCallback(SocialAccountsService $socialAccountService, Request $request, $providerName)
     {
         $userType = $request->route()->getPrefix();
         $redirectUrl = url($userType.'/login/google/callback');
         
         try {
-            $user = Socialite::driver($provider)->redirectUrl($redirectUrl)->user();
+            $providerUser = Socialite::driver($providerName)->redirectUrl($redirectUrl)->user();
         } catch (\Exception $e) {
             return redirect($userType.'/login');
         }
 
-        $authUser = $socialAccountService->findOrCreate($user, $provider, $userType);
+        $authUser = $socialAccountService->findOrCreate($providerUser, $providerName, $userType);
 
         if($userType == 'user'){
             auth('user')->login($authUser, true);

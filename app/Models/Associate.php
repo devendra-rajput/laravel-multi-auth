@@ -35,4 +35,35 @@ class Associate extends Authenticatable
     {
         $this->attributes['password'] = \Hash::make($value);
     }
+
+    public static function findOrCreateAssociateByProvider($providerUser, $providerName)
+    {
+        // Retrieve associate by provider name and provider id
+        $associateObj = self::where('provider_name', $providerName)
+                        ->where('provider_id', $providerUser->getId())
+                        ->first();
+
+        if(!$associateObj) {
+            // Retrieve associate by provider email
+            $associateObj = self::where('email', $providerUser->getEmail())->first();
+            if (! $associateObj) {
+                // If associate doesn't exist then create new one
+                $associateObj = self::create([  
+                                    'uid' => \Uuid::generate()->string,
+                                    'email' => $providerUser->getEmail(),
+                                    'name'  => $providerUser->getName(),
+                                    'provider_id' => $providerUser->getId(),
+                                    'provider_name' => $providerName
+                                ]);
+            } else {
+                // If associate exist then update it's provider id and provider name
+                $associateObj->update([
+                                'provider_id' => $providerUser->getId(),
+                                'provider_name' => $providerName
+                            ]);
+            }
+
+        }
+        return $associateObj;
+    }
 }

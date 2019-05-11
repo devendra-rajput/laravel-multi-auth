@@ -34,4 +34,35 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = \Hash::make($value);
     }
+
+    public static function findOrCreateUserByProvider($providerUser, $providerName)
+    {
+        // Retrieve user by provider name and provider id
+        $userObj = self::where('provider_name', $providerName)
+                        ->where('provider_id', $providerUser->getId())
+                        ->first();
+
+        if(!$userObj) {
+            // Retrieve user by provider email
+            $userObj = self::where('email', $providerUser->getEmail())->first();
+            if (! $userObj) {
+                // If user doesn't exist then create new one
+                $userObj = self::create([  
+                                    'uid' => \Uuid::generate()->string,
+                                    'email' => $providerUser->getEmail(),
+                                    'name'  => $providerUser->getName(),
+                                    'provider_id' => $providerUser->getId(),
+                                    'provider_name' => $providerName
+                                ]);
+            } else {
+                // If user exist then update it's provider id and provider name
+                $userObj->update([
+                                'provider_id' => $providerUser->getId(),
+                                'provider_name' => $providerName
+                            ]);
+            }
+
+        }
+        return $userObj;
+    }
 }

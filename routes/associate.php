@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider');
-Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+Route::middleware(['guest:associate'])->namespace('Auth')->group(function (){
+	// Social login route
+	Route::get('login/{provider}', 'SocialAccountController@redirectToProvider');
+	Route::get('login/{provider}/callback', 'SocialAccountController@handleProviderCallback');
+	
+});
 
 Route::middleware(['guest:associate'])->namespace('Associate')->group(function (){
-
+	// Custom login route
 	Route::get('login', 'AccountController@showLoginForm')->name('associate.login');
 	Route::post('login', 'AccountController@login')->name('associate.login.submit');
 
