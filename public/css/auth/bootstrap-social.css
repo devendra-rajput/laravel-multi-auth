@@ -2,6 +2,17 @@
     width: 40%;
 }
 
+@media only screen and (min-width : 400px) and (max-width : 991px){
+	.google-signin-btn{
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width : 100px) and (max-width : 399px){
+	.google-signin-btn{
+		width: 70%;
+	}
+}
 
 .span-or {
 	display: block;
