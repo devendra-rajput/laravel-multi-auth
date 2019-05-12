@@ -11,12 +11,8 @@
 |
 */
 
-Route::middleware(['guest:associate'])->namespace('Auth')->group(function (){
-	// Social login route
-	Route::get('login/{provider}', 'SocialAccountController@redirectToProvider');
-	Route::get('login/{provider}/callback', 'SocialAccountController@handleProviderCallback');
-	
-});
+// Social provider redirect route
+Route::get('login/{provider}', 'Auth\SocialAccountController@redirectToProvider');
 
 Route::middleware(['guest:associate'])->namespace('Associate')->group(function (){
 	// Custom login route

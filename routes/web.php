@@ -11,6 +11,10 @@
 |
 */
 
+// Social login callback route
+Route::get('login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback');
+
+
 Route::middleware(['guest'])->group(function (){
 	Route::get('/', 'HomeController@index')->name('home');
 });

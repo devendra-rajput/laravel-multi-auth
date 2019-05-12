@@ -12,12 +12,12 @@ class SocialAccountController extends Controller
     /**
      * Redirect to the provider
      */
-    public function redirectToProvider($provider, Request $request)
+    public function redirectToProvider($providerName, Request $request)
     {
         $userType = $request->route()->getPrefix();
-        $redirectUrl = url($userType.'/login/google/callback');
+        $request->session()->put('user_type', $userType);
        
-        return Socialite::driver($provider)->redirectUrl($redirectUrl)->redirect();
+        return Socialite::driver($providerName)->redirect();
     }
 
     /**
@@ -27,11 +27,9 @@ class SocialAccountController extends Controller
      */
     public function handleProviderCallback(SocialAccountsService $socialAccountService, Request $request, $providerName)
     {
-        $userType = $request->route()->getPrefix();
-        $redirectUrl = url($userType.'/login/google/callback');
-        
+        $userType = $request->session()->get('user_type');
         try {
-            $providerUser = Socialite::driver($providerName)->redirectUrl($redirectUrl)->user();
+            $providerUser = Socialite::driver($providerName)->user();
         } catch (\Exception $e) {
             return redirect($userType.'/login');
         }
