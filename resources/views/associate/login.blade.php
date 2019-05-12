@@ -61,6 +61,14 @@
                     </a>
                 </div>
             </div>
+
+            <div class="row offset-md-2 text-center mt-3">
+                <div class="col-md-12">
+                    <a href="{{ url('associate/login/github') }}">
+                        <img class="google-signin-btn" src="{{ asset('images/github-signin.png') }}">
+                    </a>
+                </div>
+            </div>
         </form>
     @endcomponent
 

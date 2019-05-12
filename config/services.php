@@ -38,7 +38,13 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_AUTH_CLIENT_ID'),
         'client_secret' => env('GOOGLE_AUTH_CLIENT_SECRET'),
-        'redirect' => env('APP_URL').'/login/google/callback',
+        'redirect' => env('GOOGLE_AUTH_CALLBACK_URL'),
+    ],
+
+    'github' => [
+        'client_id' => env('GITHUB_AUTH_CLIENT_ID'),
+        'client_secret' => env('GITHUB_AUTH_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_AUTH_CALLBACK_URL'),
     ],
 
 ];

@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
     @component('components.card')
         @slot('header') User Login @endslot
         <form method="POST" action="{{ route('user.login.submit') }}">
@@ -57,6 +56,14 @@
                 <div class="col-md-12">
                     <a href="{{ url('user/login/google') }}">
                         <img class="google-signin-btn" src="{{ asset('images/google-signin.png') }}">
+                    </a>
+                </div>
+            </div>
+
+            <div class="row offset-md-2 text-center mt-3">
+                <div class="col-md-12">
+                    <a href="{{ url('user/login/github') }}">
+                        <img class="google-signin-btn" src="{{ asset('images/github-signin.png') }}">
                     </a>
                 </div>
             </div>
